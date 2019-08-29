@@ -24,7 +24,7 @@ You can clone this project and build with docker command :
 ```
 git clone https://github.com/li-olivierfostier/docker-jboss-as.git \
 && cd docker-jboss-as \
-&& docker build -t pascalgrimaud/jboss-as:7.1.1 .
+&& docker build -t ofostier/jboss-as:7.1.1 .
 ```
 
 You can build directly from the [GitHub project](https://github.com/li-olivierfostier/docker-jboss-as/) :
