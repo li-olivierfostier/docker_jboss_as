@@ -2,7 +2,7 @@
 (http://jbossas.jboss.org/)
 
 [![Circle CI](https://circleci.com/gh/li-olivierfostier/docker-jboss-as.svg?style=shield)]
-(https://circleci.com/gh/pascalgrimaud/docker-jboss-as)
+(https://circleci.com/gh/li-olivierfostier/docker-jboss-as)
 
 
 # Information
