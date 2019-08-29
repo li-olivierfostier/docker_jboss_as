@@ -1,5 +1,5 @@
 jboss:
-  image: ofostier/jboss-as:7.1.1
+  image: ofostier/jboss-as-711
   ports:
   - "8080:8080"
   - "9990:9990"

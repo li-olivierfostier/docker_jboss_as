@@ -24,13 +24,13 @@ You can clone this project and build with docker command :
 ```
 git clone https://github.com/li-olivierfostier/docker-jboss-as.git \
 && cd docker-jboss-as \
-&& docker build -t ofostier/jboss-as:7.1.1 .
+&& docker build -t ofostier/jboss-as-711 .
 ```
 
 You can build directly from the [GitHub project](https://github.com/li-olivierfostier/docker-jboss-as/) :
 
 ```
-docker build -t ofostier/jboss-as:7.1.1 \
+docker build -t ofostier/jboss-as-711 \
 github.com/li-olivierfostier/docker-jboss-as.git
 ```
 
@@ -41,7 +41,7 @@ github.com/li-olivierfostier/docker-jboss-as.git
 To display usage :
 
 ```
-docker run --rm ofostier/jboss-as:7.1.1 /help
+docker run --rm ofostier/jboss-as-711 /help
 ```
 
 
@@ -51,7 +51,7 @@ docker run --rm ofostier/jboss-as:7.1.1 /help
 Quick start with binding to port 8080, 9990 and random password :
 
 ```
-docker run -d -p 8080:8080 -p 9990:9990 ofostier/jboss-as:7.1.1
+docker run -d -p 8080:8080 -p 9990:9990 ofostier/jboss-as-711
 ```
 
 To get the password :
@@ -64,7 +64,7 @@ Start and set a specific password for JBoss admin user :
 
 ```
 docker run -d -p 8080:8080 -p 9990:9990 -e JBOSS_PASS="pass" \
-ofostier/jboss-as:7.1.1
+ofostier/jboss-as-711
 ```
 
 If you forget the admin password, delete the file .password and restart the container :
@@ -81,6 +81,6 @@ Create a new directory and put your file.war.
 Then, create a new Dockerfile :
 
 ```
-FROM ofostier/jboss-as:7.1.1
+FROM ofostier/jboss-as-711
 ADD file.war /opt/jboss-as-7.1.1.Final/standalone/deployments/file.war
 ```

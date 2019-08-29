@@ -4,9 +4,9 @@ machine:
 dependencies:
   override:
     - docker info
-    - docker build -t ofostier/jboss-as:7.1.1 .
+    - docker build -t ofostier/jboss-as-711 .
 test:
   override:
-    - docker run -d -p 18080:8080 -p 19990:9990 --name=jboss -e JBOSS_PASS="pass" ofostier/jboss-as:7.1.1 ; sleep 10
+    - docker run -d -p 18080:8080 -p 19990:9990 --name=jboss -e JBOSS_PASS="pass" ofostier/jboss-as-711 ; sleep 10
     - docker logs jboss
     - curl -I http://localhost:18080 | grep "HTTP/1.1 200 OK"
