@@ -16,7 +16,7 @@ jobs:
           name: Publish Docker Image to Docker Hub
           command:  |
             docker images
-            echo "$DOCKER_PWD" | docker login -u "$DOCKER_LOGIN" --password-stdindocker
+            echo "$DOCKER_PWD" | docker login -u "$DOCKER_LOGIN" --password-stdin
             docker push ofostier/jboss-as-711:latest
   publish-latest:
     environment:
