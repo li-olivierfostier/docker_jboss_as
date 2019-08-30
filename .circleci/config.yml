@@ -12,8 +12,11 @@ jobs:
           name: Build Docker image
           command:  |
             docker build -t ofostier/jboss-as-711:latest .
+      - run:
+          name: Publish Docker Image to Docker Hub
+          command:  |
             docker images
-            echo "$DOCKER_PWD" | docker login -u "$DOCKER_LOGIN" --password-stdindocker images
+            echo "$DOCKER_PWD" | docker login -u "$DOCKER_LOGIN" --password-stdindocker
             docker push ofostier/jboss-as-711:latest
   publish-latest:
     environment:
