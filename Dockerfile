@@ -21,8 +21,6 @@ RUN mv /opt/jboss-as-7.1.1.Final/jboss-modules.jar /opt/jboss-as-7.1.1.Final/jbo
     wget -O /opt/jboss-as-7.1.1.Final/jboss-modules.jar http://repo1.maven.org/maven2/org/jboss/modules/jboss-modules/1.1.5.GA/jboss-modules-1.1.5.GA.jar
 
 # configuration
-ADD f.xml /opt/f.xml
-RUN sed xxxxxxxx / Mypwd
 RUN sed -i -r 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/' \
     /opt/jboss-as-7.1.1.Final/standalone/configuration/standalone.xml
 
