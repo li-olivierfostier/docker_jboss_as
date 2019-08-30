@@ -10,10 +10,11 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build Docker image
-          command: docker build -t ofostier/jboss-as-711:latest .
-          docker images
-          echo "$DOCKER_PWD" | docker login -u "$DOCKER_LOGIN" --password-stdindocker images
-          docker push ofostier/jboss-as-711:latest
+          command:  |
+            docker build -t ofostier/jboss-as-711:latest .
+            docker images
+            echo "$DOCKER_PWD" | docker login -u "$DOCKER_LOGIN" --password-stdindocker images
+            docker push ofostier/jboss-as-711:latest
   publish-latest:
     environment:
       IMAGE_NAME: building-on-ci
