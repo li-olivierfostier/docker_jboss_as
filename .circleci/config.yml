@@ -22,17 +22,6 @@ jobs:
           root: .
           paths:
             - ./image.tar
-  test:
-    executor: docker-publisher
-    steps:
-      - attach_workspace:
-          at: /tmp/workspace
-      - setup_remote_docker
-      override:
-        # RUN DOCKER CONTAINERS
-        # ofostier/jboss-as-711 -------------
-        - docker run -p 8080:8080 -p 9990:9990 --name myjbws --port 27018 ofostier/jboss-as-711:latest; sleep 15
-        - curl --retry 10 --retry-delay 5 -v http://localhost:27018-
   publish-latest:
     executor: docker-publisher
     steps:
@@ -48,6 +37,12 @@ jobs:
             echo "$DOCKER_PWD" | docker login -u "$DOCKER_LOGIN" --password-stdin
             docker images
             docker push ofostier/jboss-as-711:latest
+  test:
+      override:
+        # RUN DOCKER CONTAINERS
+        # ofostier/jboss-as-711 -------------
+        - docker run -p 8080:8080 -p 9990:9990 --name myjbws --port 8080 ofostier/jboss-as-711:latest; sleep 15
+        - curl --retry 10 --retry-delay 5 -v http://localhost:8080
 workflows:
   version: 2
   build-master:
@@ -57,6 +52,8 @@ workflows:
             branches:
               only: master
       - test:
+          requires:
+            - publish-latest
           filters:
             branches:
               only: master
