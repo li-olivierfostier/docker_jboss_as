@@ -37,7 +37,12 @@ jobs:
             echo "$DOCKER_PWD" | docker login -u "$DOCKER_LOGIN" --password-stdin
             docker images
             docker push ofostier/jboss-as-711:latest
-  test:
+  test_container:
+    executor: docker-publisher
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - setup_remote_docker
       run:
           name: Try container
           # RUN DOCKER CONTAINERS
@@ -53,15 +58,15 @@ workflows:
           filters:
             branches:
               only: master
-      - test:
-          requires:
-            - publish-latest
-          filters:
-            branches:
-              only: master
       - publish-latest:
           requires:
             - build
+          filters:
+            branches:
+              only: master
+      - test_container:
+          requires:
+            - publish-latest
           filters:
             branches:
               only: master
