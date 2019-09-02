@@ -38,11 +38,13 @@ jobs:
             docker images
             docker push ofostier/jboss-as-711:latest
   test:
-      override:
-        # RUN DOCKER CONTAINERS
-        # ofostier/jboss-as-711 -------------
-        - docker run -p 8080:8080 -p 9990:9990 --name myjbws --port 8080 ofostier/jboss-as-711:latest; sleep 15
-        - curl --retry 10 --retry-delay 5 -v http://localhost:8080
+      run:
+          name: Try container
+          # RUN DOCKER CONTAINERS
+          # ofostier/jboss-as-711 -------------
+          command: |
+            docker run -p 8080:8080 -p 9990:9990 --name myjbws --port 8080 ofostier/jboss-as-711:latest; sleep 15; |
+            curl --retry 10 --retry-delay 5 -v http://localhost:8080;
 workflows:
   version: 2
   build-master:
