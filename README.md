@@ -1,7 +1,7 @@
 [![logo](https://raw.githubusercontent.com/li-olivierfostier/docker-jboss-as/master/as7_logo.png)]
 (http://jbossas.jboss.org/)
 
-[![Circle CI](https://circleci.com/gh/li-olivierfostier/docker-jboss-as.svg?style=shield)]
+[![Circle CI](https://circleci.com/gh/li-olivierfostier/docker_jboss_as.svg?style=shield)]
 (https://circleci.com/gh/li-olivierfostier/docker-jboss-as)
 
 

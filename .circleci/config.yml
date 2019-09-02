@@ -22,17 +22,17 @@ jobs:
           root: .
           paths:
             - ./image.tar
-test:
-  executor: docker-publisher
-  steps:
-    - attach_workspace:
-        at: /tmp/workspace
-    - setup_remote_docker
-  override:
-    # RUN DOCKER CONTAINERS
-    # ofostier/jboss-as-711 -------------
-    - docker run -p 8080:8080 -p 9990:9990 --name myjbws --port 27018 ofostier/jboss-as-711:latest; sleep 15
-    - curl --retry 10 --retry-delay 5 -v http://localhost:27018-
+  test:
+    executor: docker-publisher
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - setup_remote_docker
+      override:
+        # RUN DOCKER CONTAINERS
+        # ofostier/jboss-as-711 -------------
+        - docker run -p 8080:8080 -p 9990:9990 --name myjbws --port 27018 ofostier/jboss-as-711:latest; sleep 15
+        - curl --retry 10 --retry-delay 5 -v http://localhost:27018-
   publish-latest:
     executor: docker-publisher
     steps:
