@@ -36,6 +36,24 @@ jobs:
           # RUN DOCKER CONTAINERS
           # ofostier/jboss-as-711 -------------
           command: |
+            docker run -d -p 8080:8080 -p 9990:9990 --name myjbws ofostier/jboss-as-711:latest
+      - run:
+          name: Sleep 10
+          # RUN DOCKER CONTAINERS
+          # ofostier/jboss-as-711 -------------
+          command: |
+            sleep 15;
+      - run:
+          name: DOCKER PS
+          # RUN DOCKER CONTAINERS
+          # ofostier/jboss-as-711 -------------
+          command: |
+            docker ps -a
+      - run:
+          name: Try container
+          # RUN DOCKER CONTAINERS
+          # ofostier/jboss-as-711 -------------
+          command: |
             docker run -d -p 8080:8080 -p 9990:9990 --name myjbws ofostier/jboss-as-711:latest; sleep 15;
             curl --retry 10 --retry-delay 5 -v http://localhost:8080;
       - run:
@@ -55,7 +73,8 @@ jobs:
           # RUN DOCKER CONTAINERS
           # ofostier/jboss-as-711 -------------
           command: |
-            docker run -d -p 8080:8080 -p 9990:9990 --name myjbws ofostier/jboss-as-711:latest; sleep 15;
+            docker run -d -p 8080:8080 -p 9990:9990 --name myjbws ofostier/jboss-as-711:latest; sleep 15
+            docker ps -a
             curl --retry 10 --retry-delay 5 -v http://localhost:8080;
 workflows:
   version: 2
