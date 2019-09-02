@@ -9,7 +9,7 @@
 
 The base docker image :
 
-  * [ofostier/ubuntu](https://registry.hub.docker.com/u/ofostier/ubuntu/)
+  * [ofostier/ubuntu](https://hub.docker.com/r/ofostier/ubuntu)
 
 The GitHub project :
 
@@ -73,6 +73,12 @@ If you forget the admin password, delete the file .password and restart the cont
 docker exec -it <container id> rm /.password
 ```
 
+# fix 
+Replace jboss-modules.jar with jboss-modules-1.1.5.GA.jar
+```
+RUN mv /opt/jboss-as-7.1.1.Final/jboss-modules.jar /opt/jboss-as-7.1.1.Final/jboss-modules.jar.sav &&\
+    wget -O /opt/jboss-as-7.1.1.Final/jboss-modules.jar http://repo1.maven.org/maven2/org/jboss/modules/jboss-modules/1.1.5.GA/jboss-modules-1.1.5.GA.jar
+```
 
 # Deploy a war
 
